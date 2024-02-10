@@ -45,6 +45,7 @@ import { IntegrationBlockType } from '@typebot.io/schemas/features/blocks/integr
 import { LogicBlockType } from '@typebot.io/schemas/features/blocks/logic/constants'
 import { ForgedBlockSettings } from '../../../../forge/components/ForgedBlockSettings'
 import { OpenAISettings } from '@/features/blocks/integrations/openai/components/OpenAISettings'
+import { GoogleCalendarSettings } from '@/features/blocks/integrations/googleCalendar/components/googleCalendarSettings'
 
 type Props = {
   block: BlockWithOptions
@@ -262,6 +263,15 @@ export const BlockSettings = ({
     case IntegrationBlockType.GOOGLE_SHEETS: {
       return (
         <GoogleSheetsSettings
+          options={block.options}
+          onOptionsChange={updateOptions}
+          blockId={block.id}
+        />
+      )
+    }
+    case IntegrationBlockType.GOOGLE_CALENDAR: {
+      return (
+        <GoogleCalendarSettings
           options={block.options}
           onOptionsChange={updateOptions}
           blockId={block.id}

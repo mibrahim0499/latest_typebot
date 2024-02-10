@@ -73,6 +73,8 @@ export const BlockLabel = ({ type }: Props): JSX.Element => {
       return <Text fontSize="sm">{t('editor.sidebarBlock.abTest.label')}</Text>
     case IntegrationBlockType.GOOGLE_SHEETS:
       return <Text fontSize="sm">{t('editor.sidebarBlock.sheets.label')}</Text>
+    case IntegrationBlockType.GOOGLE_CALENDAR:
+      return <Text fontSize="sm">{t('Calendar')}</Text>
     case IntegrationBlockType.GOOGLE_ANALYTICS:
       return (
         <Text fontSize="sm">{t('editor.sidebarBlock.analytics.label')}</Text>

@@ -40,7 +40,7 @@ import { LogicBlockType } from '@typebot.io/schemas/features/blocks/logic/consta
 import { Block } from '@typebot.io/schemas'
 import { OpenAILogo } from '@/features/blocks/integrations/openai/components/OpenAILogo'
 import { ForgedBlockIcon } from '@/features/forge/ForgedBlockIcon'
-
+import { GoogleCalendarLogo } from '@/features/blocks/integrations/googleCalendar/components/googleCalendarLogo'
 type BlockIconProps = { type: Block['type']; mt?: string }
 
 export const BlockIcon = ({ type, mt }: BlockIconProps): JSX.Element => {
@@ -100,6 +100,8 @@ export const BlockIcon = ({ type, mt }: BlockIconProps): JSX.Element => {
       return <AbTestIcon color={purple} mt={mt} />
     case IntegrationBlockType.GOOGLE_SHEETS:
       return <GoogleSheetsLogo mt={mt} />
+    case IntegrationBlockType.GOOGLE_CALENDAR:
+      return <GoogleCalendarLogo mt={mt} />
     case IntegrationBlockType.GOOGLE_ANALYTICS:
       return <GoogleAnalyticsLogo mt={mt} />
     case IntegrationBlockType.WEBHOOK:

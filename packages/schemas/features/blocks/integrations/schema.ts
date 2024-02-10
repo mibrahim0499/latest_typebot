@@ -10,12 +10,14 @@ import { zapierBlockSchemas } from './zapier'
 import { webhookBlockSchemas } from './webhook'
 import { makeComBlockSchemas } from './makeCom'
 import { pabblyConnectBlockSchemas } from './pabblyConnect'
+import { googleCalendarBlockSchemas } from './googleCalendar'
 
 export const integrationBlockSchemas = {
   v5: [
     chatwootBlockSchema,
     googleAnalyticsBlockSchema,
     googleSheetsBlockSchemas.v5,
+    googleCalendarBlockSchemas.v5,
     makeComBlockSchemas.v5,
     openAIBlockSchema,
     pabblyConnectBlockSchemas.v5,
@@ -29,6 +31,7 @@ export const integrationBlockSchemas = {
     chatwootBlockSchema,
     googleAnalyticsBlockSchema,
     googleSheetsBlockSchemas.v6,
+    googleCalendarBlockSchemas.v6,
     makeComBlockSchemas.v6,
     openAIBlockSchema,
     pabblyConnectBlockSchemas.v6,

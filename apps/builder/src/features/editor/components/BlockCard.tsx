@@ -102,6 +102,13 @@ export const BlockCard = (
           <BlockLabel type={props.type} />
         </BlockCardLayout>
       )
+    case IntegrationBlockType.GOOGLE_CALENDAR:
+      return (
+        <BlockCardLayout {...props} tooltip={t('Google Calendar')}>
+          <BlockIcon type={props.type} />
+          <BlockLabel type={props.type} />
+        </BlockCardLayout>
+      )
     case IntegrationBlockType.GOOGLE_ANALYTICS:
       return (
         <BlockCardLayout

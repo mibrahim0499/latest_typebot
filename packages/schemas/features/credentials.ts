@@ -5,11 +5,13 @@ import { smtpCredentialsSchema } from './blocks/integrations/sendEmail'
 import { whatsAppCredentialsSchema } from './whatsapp'
 import { zemanticAiCredentialsSchema } from './blocks'
 import { openAICredentialsSchema } from './blocks/integrations/openai'
+import { googleCalendarCredentialsSchema } from './blocks/integrations/googleCalendar/schema'
 
 export const credentialsSchema = z.discriminatedUnion('type', [
   smtpCredentialsSchema,
   googleSheetsCredentialsSchema,
   stripeCredentialsSchema,
+  googleCalendarCredentialsSchema,
   openAICredentialsSchema,
   whatsAppCredentialsSchema,
   zemanticAiCredentialsSchema,
