@@ -3,6 +3,7 @@ import { executeWebhookBlock } from './blocks/integrations/webhook/executeWebhoo
 import { executeChatwootBlock } from './blocks/integrations/chatwoot/executeChatwootBlock'
 import { executeGoogleAnalyticsBlock } from './blocks/integrations/legacy/googleAnalytics/executeGoogleAnalyticsBlock'
 import { executeGoogleSheetBlock } from './blocks/integrations/googleSheets/executeGoogleSheetBlock'
+import { executeGoogleCalendarBlock } from './blocks/integrations/googleCalendar/executeGoogleCalendarBlock'
 import { executePixelBlock } from './blocks/integrations/pixel/executePixelBlock'
 import { executeZemanticAiBlock } from './blocks/integrations/zemanticAi/executeZemanticAiBlock'
 import { IntegrationBlock, SessionState } from '@typebot.io/schemas'
@@ -20,6 +21,11 @@ export const executeIntegration =
       case IntegrationBlockType.GOOGLE_SHEETS:
         return {
           ...(await executeGoogleSheetBlock(state, block)),
+          startTimeShouldBeUpdated: true,
+        }
+      case IntegrationBlockType.GOOGLE_CALENDAR:
+        return {
+          ...(await executeGoogleCalendarBlock(state, block)),
           startTimeShouldBeUpdated: true,
         }
       case IntegrationBlockType.CHATWOOT:

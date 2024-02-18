@@ -7,30 +7,48 @@ import { GoogleCalendarAction } from './constant'
 const googleCalendarOptionsBaseSchema = z.object({
   credentialsId: z.string().optional(),
   calendarId: z.string().optional(),
-  schedule: z.array(z.object({
-    day: z.enum(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']),
-    freeTimeSlots: z.array(z.object({
-      start: z.string(),
-      end: z.string(),
-    })),
-  })).optional(),
-});
+  schedule: z
+    .array(
+      z.object({
+        day: z.enum(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']),
+        freeTimeSlots: z.array(
+          z.object({
+            start: z.string(),
+            end: z.string(),
+          })
+        ),
+      })
+    )
+    .optional(),
+})
 
 // Options for appointing a builder in Google Calendar
 const googleCalendarAppointBuilderOptionsSchema =
   googleCalendarOptionsBaseSchema.extend({
     action: z.enum([GoogleCalendarAction.APPOINT_BUILDER]),
-    builder: z.object({
-      name: z.string(),
-      schedule: z.array(z.object({
-        day: z.enum(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']),
-        freeTimeSlots: z.array(z.object({
-          start: z.string(),
-          end: z.string(),
-        })),
-      })),
-    }).optional(),
-  });
+    builder: z
+      .object({
+        name: z.string(),
+        schedule: z.array(
+          z.object({
+            day: z.enum([
+              'Monday',
+              'Tuesday',
+              'Wednesday',
+              'Thursday',
+              'Friday',
+            ]),
+            freeTimeSlots: z.array(
+              z.object({
+                start: z.string(),
+                end: z.string(),
+              })
+            ),
+          })
+        ),
+      })
+      .optional(),
+  })
 
 // Options for creating an event in Google Calendar
 const googleCalendarCreateEventOptionsSchema =
@@ -59,13 +77,15 @@ const initialGoogleCalendarOptionsSchema =
   )
 
 // Options for getting an event in Google Calendar
-const googleCalendarGetEventOptionsSchema = googleCalendarOptionsBaseSchema
-  .merge(
+const googleCalendarGetEventOptionsSchema =
+  googleCalendarOptionsBaseSchema.merge(
     z.object({
       action: z.enum([GoogleCalendarAction.GET_EVENT]),
-      eventId: z.string(), 
+      eventId: z.string(),
+      credentialsId: z.string(),
+      calendarId: z.string(),
     })
-  );
+  )
 
 const googleCalendarGetOptionsSchemas = {
   v5: googleCalendarGetEventOptionsSchema,
